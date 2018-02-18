@@ -73,12 +73,13 @@ int P3 = 24; //
 // Arrays
 int doors[] = {2,3,4,5,6,7,8,9}; // seven doors
 int magnets[] = {30,31,32,33,34,35,36,37}; // giochi e armadi
+int lights [] = {12};
 
 void setup() {
   Serial.flush();
   // Declare output
-  // da 22 a 42
-  for (int i = 22; i < 32; i++){
+  // da 22 a 37 16 relay
+  for (int i = 22; i < 38; i++){
     pinMode(i, OUTPUT);
     delay(20);
     digitalWrite(i, HIGH);
@@ -128,7 +129,6 @@ void game () {
       digitalWrite(L2, LOW);
       digitalWrite(L3, LOW);
       digitalWrite(L4, LOW);
-      digitalWrite(L5, LOW);
 
       // variables
       start_game = false;

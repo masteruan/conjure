@@ -1,23 +1,23 @@
-## Read Me
+# Read Me Conju
 
-#Doors
+## Doors
 Ingresso
 Corridoio
 Uscita
 
-#Lights
+## Lights
 Sala
 Faretto
 UV
 Cantina
 
-#Magnets
+## Magnets
 Santi
 Tarocchi
 Orologio
 Cantina
 
-#Animations
+## Animations
 Start Game
 
 Sedia
@@ -28,6 +28,27 @@ Mirror
 Reset
 Stop Game
 
-#Pin Assign
+## Pin Assign
+### Doors
+Ingresso
+'''
+12 1 !
+'''
+Corridoio
+13 2 £
+Uscita
+14 3 =
 
-#Serial Com
+### Lights
+Sala
+Faretto
+UV
+Cantina
+
+### Magnets
+Santi
+Tarocchi
+Orologio
+Cantina
+
+## Serial Com
