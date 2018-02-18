@@ -1,5 +1,5 @@
 void seriale() {
-  
+
   // open doors
   if (input[0] == '1'){
     digitalWrite(P1, HIGH);
@@ -13,7 +13,7 @@ void seriale() {
     digitalWrite(P3, HIGH);
     delay(pauseTens);
   }
-  
+
   // close the doors
   else if (input[0] == '!'){
     digitalWrite(P1, LOW);
@@ -57,7 +57,7 @@ void seriale() {
     digitalWrite(L4, HIGH);
     delay(pauseTens);
   }
-  
+
   // games
   else if (input[0] == 'Q'){
     digitalWrite(C1, LOW);
@@ -91,14 +91,14 @@ void seriale() {
     digitalWrite(C4, HIGH);
     delay(pauseTens);
   }
-  
+
   // sequences
   else if (input == "_spegni\n") {
     for (int i = 0; i < 8; i++){
       digitalWrite(doors[i], HIGH);
       delay (100);
     }
-    
+
     for (int i = 0; i < 8; i++){
       digitalWrite(magnets[i], HIGH);
       delay (100);
@@ -129,12 +129,12 @@ void seriale() {
       delay (100);
     }
   }
-  
+
   else if (input == "_leva\n"){
     regia_orologio = true;
     Serial.println("Leva dalla regia");
   }
-  
+
   else if (input == "_openAll\n"){
     for (int i = 0; i < 8; i++){
       digitalWrite(doors[i], HIGH);

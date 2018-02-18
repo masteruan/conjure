@@ -5,7 +5,7 @@
 * Giovanni Gentile
 * 0lab.it projectg.it
 *
-* OUTPUT 
+* OUTPUT
 * Porte
 * P1 ingresso
 * P2 corridoio
@@ -16,19 +16,20 @@
 * C2 santi
 * C3 tarocchi
 * C4 croci
-* 
+*
 * Luci
 * L1 stanza1
 * L2 stanza2
 * L3 occhio bue
 * L4 lamp UV
-* L5 strobo
 *
 * INPUT
 * in_orologio
-* 
+*
 * Instructions
 * Send to serial
+* "_tempesta" lights in window and lights
+* "_diablo" UV fx and faretto bue
 * "_preparation" to close all the doors and switch on all the lights
 * "_startGame" to start the game
 * "_openAll" open all the doors and magnets
@@ -51,24 +52,23 @@ boolean sign_orologio = true;
 boolean OK_orologio = false;
 boolean regia_orologio = false;
 
-int L1 = 10; // 
-int L2 = 11; // 
+int L1 = 10; //
+int L2 = 11; //
 int L3 = 12;
 int L4 = 13;
-int L5 = 14;
 
 int pauseTens = 20;
 
 // calamite
-int C1 = 30; // 
-int C2 = 31; // 
-int C3 = 32; // 
+int C1 = 30; //
+int C2 = 31; //
+int C3 = 32; //
 int C4 = 33;
 
 // Porte
-int P1 = 22; // 
-int P2 = 23; // 
-int P3 = 24; // 
+int P1 = 22; //
+int P2 = 23; //
+int P3 = 24; //
 
 // Arrays
 int doors[] = {2,3,4,5,6,7,8,9}; // seven doors
@@ -116,13 +116,13 @@ void game () {
       digitalWrite(P1, LOW);
       digitalWrite(P2, LOW);
       digitalWrite(P3, LOW);
-      
+
       // Close all armadi
       digitalWrite(C1, LOW);
       digitalWrite(C2, LOW);
       digitalWrite(C3, LOW);
       digitalWrite(C4, LOW);
-      
+
       // ON lights
       digitalWrite(L1, LOW);
       digitalWrite(L2, LOW);
@@ -147,7 +147,6 @@ void game () {
           sign_orologio = digitalRead(in_orologio);
       }
     else if (!sign_orologio||regia_orologio){
-      // switch neon, switch on lampeggiante open doors
       digitalWrite(P2, HIGH);
       delay(200);
       Serial.println("OROLOGIOK");
