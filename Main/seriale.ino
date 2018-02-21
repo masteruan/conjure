@@ -1,3 +1,6 @@
+// LOW switch ON
+// HIGH switch OFF
+
 void seriale() {
 
   // open doors
@@ -49,15 +52,26 @@ void seriale() {
     digitalWrite(L3, LOW);
     delay(pauseTens);
   }
+  else if (input[0] == 'r'){
+    digitalWrite(L3, HIGH);
+    delay(pauseTens);
+  }
+  else if (input[0] == 'H'){
+    digitalWrite(L4, LOW);
+    delay(pauseTens);
+  }
   else if (input[0] == 'h'){
     digitalWrite(L4, HIGH);
     delay(pauseTens);
   }
-  else if (input[0] == 'H'){
-    digitalWrite(L4, HIGH);
+  else if (input[0] == 'K'){
+    digitalWrite(L5, LOW);
     delay(pauseTens);
   }
-
+  else if (input[0] == 'k'){
+    digitalWrite(L5, HIGH);
+    delay(pauseTens);
+  }
   // games
   else if (input[0] == 'Q'){
     digitalWrite(C1, LOW);
@@ -92,63 +106,92 @@ void seriale() {
     delay(pauseTens);
   }
 
-  // sequences
-  else if (input == "_spegni\n") {
-    for (int i = 0; i < 8; i++){
-      digitalWrite(doors[i], HIGH);
-      delay (100);
-    }
+  // SEQUENCES
 
-    for (int i = 0; i < 8; i++){
-      digitalWrite(magnets[i], HIGH);
-      delay (100);
-    }
-    digitalWrite(L1, HIGH);
-    delay(pauseTens);
-    digitalWrite(L2, HIGH);
-    delay(pauseTens);
-    digitalWrite(L3, HIGH);
-    delay(pauseTens);
+  // orologio
+  // _orologio orologio TRUE
+  else if (input == "_orologio\n"){
+    regia_orologio = true;
+    Serial.println("Orologio regia");
   }
 
   // start
+  // start game TRUE
   else if (input == "_startGame\n" && !start_game){
     start_game = true;
     game_started = false;
   }
 
-  else if (input == "_reset\n" && !preparation){
-    digitalWrite(L1, LOW);
-    delay(pauseTens);
-    digitalWrite(L2, LOW);
-    delay(pauseTens);
-    digitalWrite(L3, HIGH);
-    delay(pauseTens);
+  // tempesta
+  // _tempesta light on windows
+  else if (input == "_tempesta\n"){
     for (int i = 0; i < 8; i++){
-      digitalWrite(doors[i], HIGH);
-      delay (100);
+      digitalWrite(C5, LOW);
+      delay(random(30, 80));
+      digitalWrite(C5, HIGH);
+      delay(random(50, 100));
     }
   }
 
-  else if (input == "_leva\n"){
-    regia_orologio = true;
-    Serial.println("Leva dalla regia");
+  // UV FX
+  // _uvfx
+  else if (input == "_uvfx\n"){
+    for (int i = 0; i < 15; i++){
+      digitalWrite(L4, LOW);
+      delay(20);
+      digitalWrite(L3, HIGH);
+      delay(random(50, 150));
+      digitalWrite(L4, HIGH);
+      delay(20);
+      digitalWrite(L3, LOW);
+      delay(random(30, 150));
+    }
   }
 
-  else if (input == "_openAll\n"){
+  // Open All
+  // _openAll Open all doors, all games and switch on lights
+  else if (input == "_openAll\n") {
     for (int i = 0; i < 8; i++){
       digitalWrite(doors[i], HIGH);
-      delay (100);
+      delay (pauseTens);
     }
     for (int i = 0; i < 8; i++){
       digitalWrite(magnets[i], HIGH);
-      delay (100);
+      delay (pauseTens);
     }
-    digitalWrite(L1, LOW);
-    delay(pauseTens);
-    digitalWrite(L2, LOW);
-    delay(pauseTens);
-    digitalWrite(L3, HIGH);
-    delay(pauseTens);
+    for (int i = 0; i < 8; i++){
+       digitalWrite(lights[i], LOW);
+       delay (pauseTens);
+    }
+  }
+
+  // reset
+  // _reset open all doors and switch on lights
+  else if (input == "_reset\n"){
+    for (int i = 0; i < 6; i++){
+      digitalWrite(lights[i], LOW);
+      delay(pauseTens);
+    }
+    for (int i = 0; i < 8; i++){
+      digitalWrite(doors[i], HIGH);
+      delay (pauseTens);
+    }
+  }
+
+  //preparation
+  // _preparation close all doors and magnets and switch on the lights
+  else if (input == "_preparation\n"){
+    for (int i = 0; i < 6; i++){
+      digitalWrite(lights[i], LOW);
+      delay(pauseTens);
+    }
+    for (int i = 0; i < 8; i++){
+      digitalWrite(doors[i], LOW);
+      delay (pauseTens);
+    }
+    for (int i = 0; i < 8; i++){
+      digitalWrite(magnets[i], LOW);
+      delay (pauseTens);
+    }
   }
 }

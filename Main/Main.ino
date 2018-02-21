@@ -16,6 +16,7 @@
 * C2 santi
 * C3 tarocchi
 * C4 croci
+* C5 led finestra
 *
 * Luci
 * L1 stanza1
@@ -29,11 +30,12 @@
 * Instructions
 * Send to serial
 * "_tempesta" lights in window and lights
-* "_diablo" UV fx and faretto bue
-* "_preparation" to close all the doors and switch on all the lights
+* "_uvfx" UV fx and faretto bue
 * "_startGame" to start the game
+*
 * "_openAll" open all the doors and magnets
 * "_reset" open all the doors and switch on the lights
+* "_preparation" to close all the doors all the magnets and switch on all the lights
 * ***********************/
 
 // switch
@@ -52,28 +54,36 @@ boolean sign_orologio = true;
 boolean OK_orologio = false;
 boolean regia_orologio = false;
 
-int L1 = 10; //
-int L2 = 11; //
-int L3 = 12;
-int L4 = 13;
-
 int pauseTens = 20;
 
+// nulla
+int nulla1 = 22;
+int nulla2 = 23;
+int nulla3 = 24;
+
 // calamite
-int C1 = 30; //
-int C2 = 31; //
-int C3 = 32; //
-int C4 = 33;
+int C1 = 26; // Tarocchi
+int C2 = 27; // Santi
+int C3 = 28; // Finestra
+int C4 = 29; // Sedia
+int C5 = 25; // Gioco cantina
 
 // Porte
-int P1 = 22; //
-int P2 = 23; //
-int P3 = 24; //
+int P1 = 32; // Porta ingresso
+int P2 = 31; // Porta corridoio
+int P3 = 30; // Porta Uscita
+
+// Luci
+int L1 = 36; // Occhio di bue
+int L2 = 37; // Luci sala ingresso
+int L3 = 35; // UV
+int L4 = 34;// Strobo
+int L5 = 33;// Luci cantina
 
 // Arrays
-int doors[] = {2,3,4,5,6,7,8,9}; // seven doors
-int magnets[] = {30,31,32,33,34,35,36,37}; // giochi e armadi
-int lights [] = {12};
+int doors[] = {P1,P2,P3}; // seven doors
+int magnets[] = {C1,C2,C3,C4,C5}; // giochi e armadi
+int lights [] = {L1,L2, L3, L4};
 
 void setup() {
   Serial.flush();
@@ -112,6 +122,7 @@ void game () {
    if (start_game){
       // reset booleane
       OK_orologio = false;
+      regia_orologio = false;
 
       // Close all doors
       digitalWrite(P1, LOW);
@@ -133,7 +144,6 @@ void game () {
       // variables
       start_game = false;
       game_started = true;
-      regia_orologio = false;
       Serial.println("gameStarted");
   }
 
