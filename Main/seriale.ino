@@ -105,7 +105,14 @@ void seriale() {
     digitalWrite(C4, HIGH);
     delay(pauseTens);
   }
-
+  else if (input[0] == 'P'){
+    digitalWrite(C5, LOW);
+    delay(pauseTens);
+  }
+  else if (input[0] == 'p'){
+    digitalWrite(C5, HIGH);
+    delay(pauseTens);
+  }
   // SEQUENCES
 
   // orologio
@@ -125,10 +132,10 @@ void seriale() {
   // tempesta
   // _tempesta light on windows
   else if (input == "_tempesta\n"){
-    for (int i = 0; i < 8; i++){
-      digitalWrite(C5, LOW);
+    for (int i = 0; i < 20; i++){
+      digitalWrite(C3, LOW);
       delay(random(30, 80));
-      digitalWrite(C5, HIGH);
+      digitalWrite(C3, HIGH);
       delay(random(50, 100));
     }
   }
