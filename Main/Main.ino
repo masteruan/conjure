@@ -17,6 +17,8 @@
 * C3 tarocchi
 * C4 croci
 * C5 led finestra
+* C6 Orologio
+* C7 Croci
 *
 * Luci
 * L1 stanza1
@@ -67,7 +69,8 @@ int C2 = 27; // Santi
 int C3 = 28; // Finestra
 int C4 = 29; // Sedia
 int C5 = 25; // Gioco cantina
-
+int C6 = 24; // Orologio #################### Contollare !!
+int C7 = 23; // Croci #################### Contollare !!
 // Porte
 int P1 = 32; // Porta ingresso
 int P2 = 31; // Porta corridoio
@@ -83,7 +86,7 @@ int L5 = 33;// Luci cantina
 // Arrays
 int doors[] = {P1,P2,P3}; // seven doors
 int magnets[] = {C1,C2,C3,C4,C5}; // giochi e armadi
-int lights [] = {L1,L2, L3, L4};
+int lights [] = {L1,L2, L3, L4, L5};
 
 void setup() {
   Serial.flush();
