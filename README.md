@@ -4,21 +4,27 @@
 This section is for pin assignment  
 
 ### Doors
-Ingresso `12 1 !`  
-Corridoio `13 2 £`  
-Uscita `14 3 =`
+Ingresso P1 `12 1 !`  
+Corridoio P2 `13 2 £`  
+Uscita P3 `14 3 =`
 
 ### Lights
-Sala `pippo`  
-Faretto `pippo`  
-UV  `pippo`  
-Cantina  
+Sala L1 `pippo`  
+Cantina L2 ''
+Faretto L3 `pippo`  
+UV  L4 `pippo`  
+
 
 ### Magnets
-Santi  
-Tarocchi  
-Orologio  
-Cantina  
+Sedia C1
+Santi C2
+Tarocchi C3    
+Croci C4
+Led Finestra C5
+C6 Orologio
+
+### Inputs
+in_orologio
 
 ### Animations
 
@@ -27,14 +33,14 @@ Cantina
 Start Game `_startGame`  
 - start game and  close all doors switch off the lights
 
-Sedia  `_sedia`
-- move the chair
-
-Tempesta  
-UV Sfx  
-Mirror  
-
 Reset  
-Stop Game  
+-
+
+Open All
+-  open all doors and switch on the lights
+
+Tempesta   `_tempesta`
+UV Sfx   `_uvfx`
+Mirror  ``
 
 ## Serial Com
