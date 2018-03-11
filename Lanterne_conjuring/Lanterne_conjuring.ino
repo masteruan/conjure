@@ -1,6 +1,6 @@
 int led= 13;
 int battery = A1;
-int timer = 15000;
+int timer = 600000;
 unsigned long clok = 0;
 unsigned long previousClok = 0;
 boolean sign_battery = true;

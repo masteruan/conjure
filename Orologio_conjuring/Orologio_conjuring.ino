@@ -17,19 +17,20 @@ void setup ()
   Serial.begin(9600);
   pinMode (SENSOR, INPUT) ;  // define the Hall magnetic sensor line as input
   pinMode (SENSOR2, INPUT) ;  // define the Hall magnetic sensor line as input
+  Serial.println("Ready");
   for (int i = 0; i < 5; i++){
     digitalWrite(Led, HIGH);
     delay(100);
     digitalWrite(Led, LOW);
     delay(100);
   }
+digitalWrite (relay, HIGH);
 }
 
-void loop ()
-{
+void loop (){
+  
   val = digitalRead (SENSOR) ; // read sensor line
   val2 = digitalRead (SENSOR2) ; // read sensor line
-
   if (val == LOW && val2 == LOW) // when the Hall sensor detects a magnetic field, Arduino LED lights up
   {
     
@@ -44,14 +45,15 @@ void loop ()
     
     if (val == LOW && val2 == LOW){
     digitalWrite (Led, HIGH);
-    digitalWrite (relay, HIGH);
+    digitalWrite (relay, LOW);
     Serial.println("Calamita!!!");
     delay(2000);
+    while(true){}
     }
   }
   else
   {
     digitalWrite (Led, LOW);
-    digitalWrite (relay, LOW);
+    digitalWrite (relay, HIGH);
   }
 }
