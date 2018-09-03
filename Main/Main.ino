@@ -17,7 +17,12 @@
 * C3 finestra
 * C4 sedia
 * C5 led finestra
+<<<<<<< HEAD
 * C6 croci
+=======
+* C6 Orologio
+* C7 Croci
+>>>>>>> dd849e536ef996ab5650b5a73c1ec85d121b60aa
 *
 * Luci
 * L1 stanza1
@@ -66,9 +71,14 @@ int C2 = 27; // Santi
 int C3 = 28; // Finestra
 int C4 = 29; // Sedia
 int C5 = 25; // Gioco cantina
+<<<<<<< HEAD
 int C6 = 23; // Orologio
 int C7 = 24; // Croci
 
+=======
+int C6 = 24; // Orologio #################### Contollare !!
+int C7 = 23; // Croci #################### Contollare !!
+>>>>>>> dd849e536ef996ab5650b5a73c1ec85d121b60aa
 // Porte
 int P1 = 32; // Porta ingresso
 int P2 = 31; // Porta corridoio
@@ -83,8 +93,13 @@ int L5 = 33;// Luci cantina
 
 // Arrays
 int doors[] = {P1,P2,P3}; // seven doors
+<<<<<<< HEAD
 int magnets[] = {C1, C2, C3, C4, C5, C6}; // giochi e armadi
 int lights [] = {L2, L3, L5};
+=======
+int magnets[] = {C1,C2,C3,C4,C5}; // giochi e armadi
+int lights [] = {L1,L2, L3, L4, L5};
+>>>>>>> dd849e536ef996ab5650b5a73c1ec85d121b60aa
 
 void setup() {
   Serial.flush();
