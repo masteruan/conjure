@@ -1,5 +1,5 @@
 /* ********************
-* 17 Febbraio 2018
+* 29 Marzo 2018
 * per Conjuring
 * v 0.1
 * Giovanni Gentile
@@ -12,11 +12,12 @@
 * P3 uscita
 *
 * Calamite
-* C1 sedia dondolo
+* C1 tarocchi
 * C2 santi
-* C3 tarocchi
-* C4 croci
+* C3 finestra
+* C4 sedia
 * C5 led finestra
+* C6 croci
 *
 * Luci
 * L1 stanza1
@@ -49,7 +50,7 @@ String input = ""; //String
 char inChar ;
 
 // INPUT
-int in_orologio = A0;
+int in_orologio = A1;
 boolean sign_orologio = true;
 boolean OK_orologio = false;
 boolean regia_orologio = false;
@@ -58,8 +59,6 @@ int pauseTens = 20;
 
 // nulla
 int nulla1 = 22;
-int nulla2 = 23;
-int nulla3 = 24;
 
 // calamite
 int C1 = 26; // Tarocchi
@@ -67,6 +66,8 @@ int C2 = 27; // Santi
 int C3 = 28; // Finestra
 int C4 = 29; // Sedia
 int C5 = 25; // Gioco cantina
+int C6 = 23; // Orologio
+int C7 = 24; // Croci
 
 // Porte
 int P1 = 32; // Porta ingresso
@@ -82,8 +83,8 @@ int L5 = 33;// Luci cantina
 
 // Arrays
 int doors[] = {P1,P2,P3}; // seven doors
-int magnets[] = {C1,C2,C3,C4,C5}; // giochi e armadi
-int lights [] = {L1,L2, L3, L4};
+int magnets[] = {C1, C2, C3, C4, C5, C6}; // giochi e armadi
+int lights [] = {L2, L3, L5};
 
 void setup() {
   Serial.flush();
@@ -96,7 +97,7 @@ void setup() {
   }
   // Declare input
   // This input give FALSE if the input is open TRUE if the input is closed
-  pinMode(A0, INPUT_PULLUP);
+  pinMode(in_orologio, INPUT_PULLUP);
 
   // Start up serial connection
   Serial.begin(9600); //default 115200
@@ -108,7 +109,6 @@ void setup() {
 }
 
 void loop() {
-
   if (stringComplete) {
     seriale();
     delay(20);
@@ -129,38 +129,41 @@ void game () {
       digitalWrite(P2, LOW);
       digitalWrite(P3, LOW);
 
-      // Close all armadi
+      // Close all 
       digitalWrite(C1, LOW);
       digitalWrite(C2, LOW);
-      digitalWrite(C3, LOW);
+      digitalWrite(C3, HIGH);
       digitalWrite(C4, LOW);
+      digitalWrite(C5, LOW);
+      digitalWrite(C6, LOW);
+      digitalWrite(C7, HIGH);
 
-      // ON lights
-      digitalWrite(L1, LOW);
-      digitalWrite(L2, LOW);
-      digitalWrite(L3, LOW);
-      digitalWrite(L4, LOW);
+      
+    for (int i = 0; i < 3; i++){
+      digitalWrite(lights[i], LOW);
+      delay(pauseTens);
+    }
 
       // variables
       start_game = false;
       game_started = true;
       Serial.println("gameStarted");
-  }
+      delay(1000);
+      }
 
-  else if (game_started){
+  if (game_started){
     if (!OK_orologio){
       sign_orologio = digitalRead(in_orologio);
-      delay(50);
       if(!sign_orologio){
           sign_orologio = true;
           delay(300);
           sign_orologio = digitalRead(in_orologio);
       }
-    else if (!sign_orologio||regia_orologio){
-      digitalWrite(P2, HIGH);
-      delay(200);
-      Serial.println("OROLOGIOK");
-      OK_orologio = true;
+        if (!sign_orologio || regia_orologio){
+          digitalWrite(P2, HIGH);
+          delay(200);
+          Serial.println("OROLOGIOK");
+          OK_orologio = true;
       }
     }
   }

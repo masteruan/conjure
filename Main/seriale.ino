@@ -113,6 +113,22 @@ void seriale() {
     digitalWrite(C5, HIGH);
     delay(pauseTens);
   }
+  else if (input[0] == 'F'){
+    digitalWrite(C6, LOW);
+    delay(pauseTens);
+  }
+  else if (input[0] == 'f'){
+    digitalWrite(C6, HIGH);
+    delay(pauseTens);
+  }
+  else if (input[0] == 'Y'){
+    digitalWrite(C7, LOW);
+    delay(pauseTens);
+  }
+  else if (input[0] == 'y'){
+    digitalWrite(C7, HIGH);
+    delay(pauseTens);
+  }
   // SEQUENCES
 
   // orologio
@@ -158,15 +174,15 @@ void seriale() {
   // Open All
   // _openAll Open all doors, all games and switch on lights
   else if (input == "_openAll\n") {
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 3; i++){
       digitalWrite(doors[i], HIGH);
       delay (pauseTens);
     }
-    for (int i = 0; i < 8; i++){
-      digitalWrite(magnets[i], HIGH);
+    for (int i = 0; i < 6; i++){
+      digitalWrite(magnets[i], LOW);
       delay (pauseTens);
     }
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 3; i++){
        digitalWrite(lights[i], LOW);
        delay (pauseTens);
     }
@@ -175,12 +191,16 @@ void seriale() {
   // reset
   // _reset open all doors and switch on lights
   else if (input == "_reset\n"){
-    for (int i = 0; i < 6; i++){
+    for (int i = 0; i < 3; i++){
       digitalWrite(lights[i], LOW);
       delay(pauseTens);
     }
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 3; i++){
       digitalWrite(doors[i], HIGH);
+      delay (pauseTens);
+    }
+    for (int i = 0; i < 6; i++){
+      digitalWrite(magnets[i], HIGH);
       delay (pauseTens);
     }
   }
@@ -188,15 +208,15 @@ void seriale() {
   //preparation
   // _preparation close all doors and magnets and switch on the lights
   else if (input == "_preparation\n"){
-    for (int i = 0; i < 6; i++){
+    for (int i = 0; i < 3; i++){
       digitalWrite(lights[i], LOW);
       delay(pauseTens);
     }
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 3; i++){
       digitalWrite(doors[i], LOW);
       delay (pauseTens);
     }
-    for (int i = 0; i < 8; i++){
+    for (int i = 0; i < 6; i++){
       digitalWrite(magnets[i], LOW);
       delay (pauseTens);
     }
